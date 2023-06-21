@@ -518,8 +518,7 @@ read_from_stream(FILE *stream, ReadFromStreamContext *context)
 
 				if (!(*context->callback)(context->ctx, line, &stop))
 				{
-					free(buf);
-					return false;
+					continue;
 				}
 
 				if (stop)
