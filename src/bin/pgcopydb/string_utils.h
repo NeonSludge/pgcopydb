@@ -48,4 +48,6 @@ void processBufferCallback(const char *buffer, bool error);
 void pretty_print_bytes(char *buffer, size_t size, uint64_t bytes);
 void pretty_print_count(char *buffer, size_t size, uint64_t count);
 
+char * repl_str(const char *str, const char *from, const char *to);
+
 #endif /* STRING_UTILS_h */

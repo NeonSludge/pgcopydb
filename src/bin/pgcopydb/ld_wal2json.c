@@ -427,9 +427,20 @@ SetColumnNamesAndValues(LogicalMessageTuple *tuple,
 				else
 				{
 					valueColumn->oid = TEXTOID;
-					valueColumn->val.str = strdup(x);
 					valueColumn->isNull = false;
 					valueColumn->isQuoted = false;
+
+					int slen = strlen(x);
+
+					if (x != NULL && slen > 0)
+					{
+						/* escape single quotes */
+						valueColumn->val.str = repl_str(x, "'", "''");
+					}
+					else
+					{
+						valueColumn->val.str = strdup(x);
+					}
 				}
 				break;
 			}
